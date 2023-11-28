@@ -7,7 +7,7 @@ defmodule Dryhard.MixProject do
   def project do
     [
       app: :dryhard,
-      description: "Dryhard - Yippee-Ki-Yay, CRUD-y code!",
+      description: "Dryhard - Yippee-Ki-Yay, ...wet code!",
       version: @version,
       source_url: @github_url,
       elixir: "~> 1.14",
@@ -43,7 +43,7 @@ defmodule Dryhard.MixProject do
       licenses: ["MIT"],
       links: %{
         "GitHub" => @github_url,
-        "CHANGELOG" => "https://github.com/mindreframer/dryhard/blob/main/CHANGELOG.md"
+        "CHANGELOG" => "https://github.com/maxohq/dryhard/blob/main/CHANGELOG.md"
       }
     ]
   end
