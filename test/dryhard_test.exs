@@ -79,6 +79,9 @@ defmodule DryhardTest do
     assert user1 == UserContext.get_user_by_username("user1")
     {:ok, user1_changed} = UserContext.update_user(user1, %{bio: "CHANGED"})
     assert user1_changed.bio == "CHANGED"
+    user1_new = UserContext.get_user_by_username("user1")
+    assert user1_new.bio == "CHANGED"
+
   end
 
   test "delete_user works" do

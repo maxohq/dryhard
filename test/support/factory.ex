@@ -36,6 +36,6 @@ defmodule Dryhard.Factory do
     }
   end
 
-  defp integer_sequence(sequence_name), do: sequence(sequence_name, & &1)
+  # defp integer_sequence(sequence_name), do: sequence(sequence_name, & &1)
   # defp float_sequence(sequence_name \\ ""), do: sequence(sequence_name, &(&1 / 1))
 end
