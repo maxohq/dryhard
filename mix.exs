@@ -2,7 +2,7 @@ defmodule Dryhard.MixProject do
   use Mix.Project
 
   @github_url "https://github.com/maxohq/dryhard"
-  @version "0.1.0"
+  @version "0.1.1"
 
   def project do
     [
