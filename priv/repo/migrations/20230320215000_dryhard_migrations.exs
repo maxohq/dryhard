@@ -17,6 +17,7 @@ defmodule Dryhard.Repo.Migrations.CreateTables do
 
       timestamps()
     end
+    create unique_index(:users, [:username])
 
     create table(:posts) do
       add :user_id, references(:users)

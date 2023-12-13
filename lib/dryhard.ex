@@ -173,6 +173,28 @@ defmodule Dryhard do
     end
   end
 
+  defmacro upsert(config, changeset_fn, opts \\ [on_conflict: :nothing]) do
+    quote bind_quoted: [config: config, changeset_fn: changeset_fn, opts: opts] do
+      @doc """
+      Creates a single #{config.plural_name} record (ignores conflicts, like ID / uniq indexes)
+      Provide upsert options as documented here:
+        - https://hexdocs.pm/ecto/Ecto.Repo.html#c:insert/2-upserts
+
+      Defaults to:
+        `[on_conflict: :nothing]`
+
+      Params:
+        - attrs: map to pass into the changeset function
+      """
+      def unquote(:"upsert_#{config.singular_name}")(attrs) do
+        unquote(config.schema)
+        |> struct()
+        |> unquote(changeset_fn).(attrs)
+        |> unquote(config.repo).insert(unquote(opts))
+      end
+    end
+  end
+
   defmacro create(config, changeset_fn) do
     quote bind_quoted: [config: config, changeset_fn: changeset_fn] do
       @doc """

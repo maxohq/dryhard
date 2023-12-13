@@ -22,6 +22,7 @@ defmodule DryhardTest do
     Dryhard.get(@resource)
     Dryhard.new(@resource)
     Dryhard.create(@resource, &User.changeset/2)
+    Dryhard.upsert(@resource, &User.changeset/2)
     Dryhard.change(@resource, &User.changeset/2)
     Dryhard.update(@resource, &User.changeset/2)
     Dryhard.delete(@resource)
@@ -71,6 +72,12 @@ defmodule DryhardTest do
 
   test "create_user works" do
     {:ok, user1} = UserContext.create_user(%{username: "user1"})
+    assert user1 == UserContext.get_user_by_username("user1")
+  end
+
+  test "upsert_user works (ignore conflicts on inserts by default)" do
+    {:ok, user1} = UserContext.upsert_user(%{username: "user1"})
+    {:ok, _user1_duplicate} = UserContext.upsert_user(%{username: "user1"})
     assert user1 == UserContext.get_user_by_username("user1")
   end
 
