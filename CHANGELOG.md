@@ -1,3 +1,7 @@
+## v0.1.3 (2025-05-27)
+
+- make `query_builder` a hard dependency (again)
+
 ## v0.1.2 (2025-05-27)
 
 - `change` macro defaults to `%{}` for attributes, this makes it compatible with Phoenix generate liveview code
