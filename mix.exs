@@ -53,8 +53,8 @@ defmodule Dryhard.MixProject do
     [
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
+      {:query_builder, "~> 1.4"},
       {:ex_doc, "~> 0.29", only: :dev, runtime: false},
-      {:query_builder, "~> 1.4", only: [:test, :dev]},
       {:ex_machina, "~> 2.7", only: [:dev, :test]},
       {:maxo_test_iex, "~> 0.1", only: :test}
     ]
