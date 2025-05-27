@@ -237,7 +237,7 @@ defmodule Dryhard do
 
   defmacro change(config, changeset_fn) do
     quote bind_quoted: [config: config, changeset_fn: changeset_fn] do
-      def unquote(:"change_#{config.singular_name}")(resource, attrs) do
+      def unquote(:"change_#{config.singular_name}")(resource, attrs \\ %{}) do
         unquote(changeset_fn).(resource, attrs)
       end
     end

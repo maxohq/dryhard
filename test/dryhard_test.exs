@@ -81,6 +81,20 @@ defmodule DryhardTest do
     assert user1 == UserContext.get_user_by_username("user1")
   end
 
+  test "change_user works with 2 args" do
+    {:ok, user1} = UserContext.create_user(%{username: "user1"})
+    assert user1 == UserContext.get_user_by_username("user1")
+    changeset = UserContext.change_user(user1, %{bio: "CHANGED"})
+    assert changeset.changes.bio == "CHANGED"
+  end
+
+  test "change_user works with 1 arg" do
+    {:ok, user1} = UserContext.create_user(%{username: "user1"})
+    assert user1 == UserContext.get_user_by_username("user1")
+    changeset = UserContext.change_user(user1)
+    assert changeset.changes == %{}
+  end
+
   test "update_user works" do
     {:ok, user1} = UserContext.create_user(%{username: "user1"})
     assert user1 == UserContext.get_user_by_username("user1")
